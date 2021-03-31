@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylessheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -11,53 +11,46 @@
         <div class="avatar-perfil">
           <img src="/images/avatar.png" alt="" srcset="">
         </div>
-        <div class="perfil-name">Usuário</div>
+        <div class="perfil-name"><%= user %></div>
       </div>
       <div class="documents">
-        <div class="box">
-          <div class="image-box">
-            <img src="images/document.png" alt="" srcset="">
-          </div>
-          <div class="name-box">
-            <p>Exemplo 1</p>
+        <div class="path" id="path">
+          <div class="paste">
+            <span>Home</span>
           </div>
         </div>
-        <div class="box">
-          <div class="image-box">
-            <img src="images/folder.png" alt="" srcset="">
-          </div>
-          <div class="name-box">
-            <p>Exemplo 2</p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="image-box">
-            <img src="images/folder.png" alt="" srcset="">
-          </div>
-          <div class="name-box">
-            <p>Exemplo 2</p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="image-box">
-            <img src="images/image.png" alt="" srcset="">
-          </div>
-          <div class="name-box">
-            <p>Exemplo 3</p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="image-box">
-            <img src="/images/music.png" alt="" srcset="">
-          </div>
-          <div class="name-box">
-            <p>Exemplo 4</p>
-          </div>
+        <div class="list-files">
+          <ul class="files">
+            <li class="box">
+              <div class="image-box">
+                <img src="images/document.png" alt="" srcset="">
+              </div>
+              <div class="name-box">
+                <p>Exemplo 1</p>
+            </li>
+            <li class="box">
+              <div class="image-box">
+                <img src="images/folder.png" alt="" srcset="">
+              </div>
+              <div class="name-box">
+                <p>Exemplo 2</p>
+              </div>
+            </li>
+            <li class="box">
+              <div class="image-box">
+                <img src="images/folder.png" alt="" srcset="">
+              </div>
+              <div class="name-box">
+                <p>Exemplo 3</p>
+              </div>
+            </li>
+          </ul>
+
         </div>
       </div>
       <div class="options">
         <div class="add-doc">
-          <label class="new-file" for='selecao-arquivo'>Selecionar um arquivo &#187;</label>
+          <label class="new-file" id="btn-send" for='new-file'>Selecionar um arquivo &#187;</label>
           <input id='new-file' type='file' multiple>
         </div>
         <button class="newfolder" type="button">Nova pasta</button>
@@ -68,6 +61,16 @@
     <div class="footer">
       
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="src/controller/FJDropBoxController.js"></script>
+    <script src="src/index.js"></script>
+  
   </body>
   
 </html>

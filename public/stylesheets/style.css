@@ -34,7 +34,18 @@ main{
   position: absolute;
   z-index: -1;   
 }
-.documents{
+.path{
+  margin: 1.5rem 0 0 2rem;
+  font-size: 24px;
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline;
+}
+.path span{
+  cursor: pointer;
+}
+
+.files{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1.5em;
