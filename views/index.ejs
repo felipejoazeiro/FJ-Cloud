@@ -20,13 +20,14 @@
           </div>
         </div>
         <div class="list-files">
-          <ul class="files">
-            <li class="box">
+          <ul class="files" id="list-files">
+            <li class="box" id="file">
               <div class="image-box">
                 <img src="images/document.png" alt="" srcset="">
               </div>
               <div class="name-box">
                 <p>Exemplo 1</p>
+              </div>
             </li>
             <li class="box">
               <div class="image-box">
@@ -50,10 +51,10 @@
       </div>
       <div class="options">
         <div class="add-doc">
-          <label class="new-file" id="btn-send" for='new-file'>Selecionar um arquivo &#187;</label>
-          <input id='new-file' type='file' multiple>
+          <label class="new-file" id="btn-send" for='files'>Selecionar um arquivo &#187;</label>
+          <input id='files' type='file' multiple>
         </div>
-        <button class="newfolder" type="button">Nova pasta</button>
+        <button class="newfolder" id="newfolder" type="button">Nova pasta</button>
         <button id="rename"><span>Renomear</span></button>
         <button id="delete"><span>Deletar</span></button>
       </div>
