@@ -10,6 +10,11 @@ class FJDropBox{
         this.btnRename = document.querySelector('#rename')
         this.btnDelete = document.querySelector('#delete')
 
+        this.modal = document.querySelector('#modal')
+        this.progress = this.modal.querySelector('#progress')
+        this.namefileEl = this.modal.querySelector('#name-file')
+        this.timeLeft = this.modal.querySelector('#time-left')
+
         this.listFilesEl = document.querySelector('#list-files')
 
         this.connectFireBase()
@@ -19,14 +24,14 @@ class FJDropBox{
     }
     connectFireBase(){
         var firebaseConfig = {
-            apiKey: "AIzaSyBSOE0aALdj2FDvGvwiVteybgKJt6CBFp8",
-            authDomain: "fj---dropbox.firebaseapp.com",
-            databaseUrl: "https://fj---dropbox-default-rtdb.firebaseio.com/",
-            projectId: "fj---dropbox",
-            storageBucket: "fj---dropbox.appspot.com",
-            messagingSenderId: "464902457297",
-            appId: "1:464902457297:web:49484f773e46462caf02f0",
-            measurementId: "G-00C4V2PRLC"
+            apiKey: "AIzaSyC3uuvxBxYeD-xY13gBlumWjw3f6XFL5jA",
+            authDomain: "jdropbox-68e5e.firebaseapp.com",
+            databaseURL: "https://jdropbox-68e5e-default-rtdb.firebaseio.com",
+            projectId: "jdropbox-68e5e",
+            storageBucket: "jdropbox-68e5e.appspot.com",
+            messagingSenderId: "828330083398",
+            appId: "1:828330083398:web:62469e10bf50c37a3b7647",
+            measurementId: "G-LEBGB7W6QB"
           };
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
@@ -115,8 +120,8 @@ class FJDropBox{
         })
     }
 
-    uploadCOmplete(){
-        this.modalShow(false)
+    uploadComplete(){
+        //this.modalShow(false)
         this.inputFilesEl.value = '';
         this.btnSendFileEl.disabled = false
     }
@@ -126,7 +131,7 @@ class FJDropBox{
         return firebase.database().ref(path)
     }
 
-    ajax(ult, method='GET', formData = new FormData(), onprogress=function(){}, onloadstart=function(){}){
+    ajax(url, method='GET', formData = new FormData(), onprogress=function(){}, onloadstart=function(){}){
         return new Promise((resolve, reject)=>{
             let ajax = new XMLHttpRequest()
             ajax.open(method, url)
@@ -177,6 +182,42 @@ class FJDropBox{
         })
         return Promise.all(promises)
     }
+
+    uploadProgress(event,file){
+        let timespent = Date.now() - this.startTime
+        let loaded = event.loaded
+        let total = event.total
+        let porcent = parseInt((loaded/total)*100)
+        
+        let timeleft=((100-porcent)*timespent)/porcent
+
+        this.progress.value = `${porcent}%`
+
+        this.namefileEl.innerHTML = file.name;
+        this.timeLeft.innerHTML = this.formtTime(timeleft)
+    }
+
+    formtTime(duration){
+        let seconds = parseInt((duration/1000)%60)
+        let minutes = parseInt((duration/(1000*60))%60)
+        let hours = parseInt((duration/(1000*60*60))%24)
+
+        if (hours > 0) {
+            return `${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+        }
+
+        if (minutes > 0) {
+            return `${minutes} minutos e ${seconds} segundos`;
+        }
+
+        if (seconds > 0) {
+            return `${seconds} segundos`;
+        }
+
+        return ''
+
+    }
+
     getFileImage(file){
         switch(file.type){
             case 'folder':

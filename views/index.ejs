@@ -57,18 +57,32 @@
         <button class="newfolder" id="newfolder" type="button">Nova pasta</button>
         <button id="rename"><span>Renomear</span></button>
         <button id="delete"><span>Deletar</span></button>
+        <div class="modal modal-off" id="modal">
+          <div class="name-file">
+            <span id="name-file"></span>
+          </div>
+          <div class="progress">
+            <span id="progress"></span>
+          </div>
+          <div class="time">
+            <span id="time-left"></span>
+          </div>
+
+        </div>
       </div>
     </main>
-    <div class="footer">
-      
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
     
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
     <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-storage.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
     <script src="src/controller/FJDropBoxController.js"></script>
     <script src="src/index.js"></script>
   
